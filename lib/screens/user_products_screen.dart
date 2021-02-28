@@ -20,7 +20,7 @@ class UserProductsScreen extends StatelessWidget {
     print('rebuilding...');
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Products'),
+        title: const Text('Your Houses'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add),
