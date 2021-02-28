@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../models/http_exception.dart';
-import './product.dart';
+import './house.dart';
 
-class Products with ChangeNotifier {
-  List<Product> _items = [
+class Houses with ChangeNotifier {
+  List<House> _items = [
     // Product(
     //   id: 'p1',
     //   title: 'Red Shirt',
@@ -45,20 +45,20 @@ class Products with ChangeNotifier {
   final String authToken;
   final String userId;
 
-  Products(this.authToken, this.userId, this._items);
+  Houses(this.authToken, this.userId, this._items);
 
-  List<Product> get items {
+  List<House> get items {
     // if (_showFavoritesOnly) {
     //   return _items.where((prodItem) => prodItem.isFavorite).toList();
     // }
     return [..._items];
   }
 
-  List<Product> get favoriteItems {
+  List<House> get favoriteItems {
     return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 
-  Product findById(String id) {
+  House findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);
   }
 
@@ -72,7 +72,7 @@ class Products with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  Future<void> fetchAndSetProducts([bool filterByUser = false]) async {
+  Future<void> fetchAndSetHouses([bool filterByUser = false]) async {
     final filterString = filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
     var url =
         'https://popishop-24d25.firebaseio.com/products.json?auth=$authToken&$filterString';
@@ -86,9 +86,9 @@ class Products with ChangeNotifier {
           'https://popishop-24d25.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
       final favoriteResponse = await http.get(url);
       final favoriteData = json.decode(favoriteResponse.body);
-      final List<Product> loadedProducts = [];
+      final List<House> loadedHouses = [];
       extractedData.forEach((prodId, prodData) {
-        loadedProducts.add(Product(
+        loadedHouses.add(House(
           id: prodId,
           title: prodData['title'],
           description: prodData['description'],
@@ -98,35 +98,35 @@ class Products with ChangeNotifier {
           imageUrl: prodData['imageUrl'],
         ));
       });
-      _items = loadedProducts;
+      _items = loadedHouses;
       notifyListeners();
     } catch (error) {
       throw (error);
     }
   }
 
-  Future<void> addProduct(Product product) async {
+  Future<void> addHouse(House house) async {
     final url =
         'https://popishop-24d25.firebaseio.com/products.json?auth=$authToken';
     try {
       final response = await http.post(
         url,
         body: json.encode({
-          'title': product.title,
-          'description': product.description,
-          'imageUrl': product.imageUrl,
-          'price': product.price,
+          'title': house.title,
+          'description': house.description,
+          'imageUrl': house.imageUrl,
+          'price': house.price,
           'creatorId': userId,
         }),
       );
-      final newProduct = Product(
-        title: product.title,
-        description: product.description,
-        price: product.price,
-        imageUrl: product.imageUrl,
+      final newHouse = House(
+        title: house.title,
+        description: house.description,
+        price: house.price,
+        imageUrl: house.imageUrl,
         id: json.decode(response.body)['name'],
       );
-      _items.add(newProduct);
+      _items.add(newHouse);
       // _items.insert(0, newProduct); // at the start of the list
       notifyListeners();
     } catch (error) {
@@ -135,38 +135,38 @@ class Products with ChangeNotifier {
     }
   }
 
-  Future<void> updateProduct(String id, Product newProduct) async {
+  Future<void> updateHouse(String id, House newHouse) async {
     final prodIndex = _items.indexWhere((prod) => prod.id == id);
     if (prodIndex >= 0) {
       final url =
           'https://popishop-24d25.firebaseio.com/products/$id.json?auth=$authToken';
       await http.patch(url,
           body: json.encode({
-            'title': newProduct.title,
-            'description': newProduct.description,
-            'imageUrl': newProduct.imageUrl,
-            'price': newProduct.price
+            'title': newHouse.title,
+            'description': newHouse.description,
+            'imageUrl': newHouse.imageUrl,
+            'price': newHouse.price
           }));
-      _items[prodIndex] = newProduct;
+      _items[prodIndex] = newHouse;
       notifyListeners();
     } else {
       print('...');
     }
   }
 
-  Future<void> deleteProduct(String id) async {
+  Future<void> deleteHouse(String id) async {
     final url =
         'https://popishop-24d25.firebaseio.com/products/$id.json?auth=$authToken';
-    final existingProductIndex = _items.indexWhere((prod) => prod.id == id);
-    var existingProduct = _items[existingProductIndex];
-    _items.removeAt(existingProductIndex);
+    final existingHouseIndex = _items.indexWhere((prod) => prod.id == id);
+    var existingHouse = _items[existingHouseIndex];
+    _items.removeAt(existingHouseIndex);
     notifyListeners();
     final response = await http.delete(url);
     if (response.statusCode >= 400) {
-      _items.insert(existingProductIndex, existingProduct);
+      _items.insert(existingHouseIndex, existingHouse);
       notifyListeners();
-      throw HttpException('Could not delete product.');
+      throw HttpException('Could not delete house.');
     }
-    existingProduct = null;
+    existingHouse = null;
   }
 }

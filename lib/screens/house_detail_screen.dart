@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/products.dart';
+import '../providers/houses.dart';
 
-class ProductDetailScreen extends StatelessWidget {
+class HouseDetailScreen extends StatelessWidget {
   // final String title;
   // final double price;
 
@@ -14,7 +14,7 @@ class ProductDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final productId =
         ModalRoute.of(context).settings.arguments as String; // is the id!
-    final loadedProduct = Provider.of<Products>(
+    final loadedHouse = Provider.of<Houses>(
       context,
       listen: false,
     ).findById(productId);
@@ -28,11 +28,11 @@ class ProductDetailScreen extends StatelessWidget {
             expandedHeight: 300,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(loadedProduct.title),
+              title: Text(loadedHouse.title),
               background: Hero(
-                tag: loadedProduct.id,
+                tag: loadedHouse.id,
                 child: Image.network(
-                  loadedProduct.imageUrl,
+                  loadedHouse.imageUrl,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -43,7 +43,7 @@ class ProductDetailScreen extends StatelessWidget {
               [
                 SizedBox(height: 10),
                 Text(
-                  '\$${loadedProduct.price}',
+                  '\$${loadedHouse.price}',
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 20,
@@ -57,7 +57,7 @@ class ProductDetailScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   width: double.infinity,
                   child: Text(
-                    loadedProduct.description,
+                    loadedHouse.description,
                     textAlign: TextAlign.center,
                     softWrap: true,
                   ),

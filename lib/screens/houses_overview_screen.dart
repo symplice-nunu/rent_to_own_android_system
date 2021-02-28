@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/app_drawer.dart';
-import '../widgets/products_grid.dart';
+import '../widgets/houses_grid.dart';
 import '../widgets/badge.dart';
 import '../providers/cart.dart';
 import './cart_screen.dart';
-import '../providers/products.dart';
+import '../providers/houses.dart';
 
 enum FilterOptions {
   Favorites,
   All,
 }
 
-class ProductsOverviewScreen extends StatefulWidget {
+class HousesOverviewScreen extends StatefulWidget {
   @override
-  _ProductsOverviewScreenState createState() => _ProductsOverviewScreenState();
+  _HousesOverviewScreenState createState() => _HousesOverviewScreenState();
 }
 
-class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
+class _HousesOverviewScreenState extends State<HousesOverviewScreen> {
   var _showOnlyFavorites = false;
   var _isInit = true;
   var _isLoading = false;
@@ -38,7 +38,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<Products>(context).fetchAndSetProducts().then((_) {
+      Provider.of<Houses>(context).fetchAndSetHouses().then((_) {
         setState(() {
           _isLoading = false;
         });
@@ -99,7 +99,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : ProductsGrid(_showOnlyFavorites),
+          : HousesGrid(_showOnlyFavorites),
     );
   }
 }

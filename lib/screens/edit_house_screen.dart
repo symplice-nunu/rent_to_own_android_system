@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/product.dart';
-import '../providers/products.dart';
+import '../providers/house.dart';
+import '../providers/houses.dart';
 
-class EditProductScreen extends StatefulWidget {
+class EditHouseScreen extends StatefulWidget {
   static const routeName = '/edit-product';
 
   @override
-  _EditProductScreenState createState() => _EditProductScreenState();
+  _EditHouseScreenState createState() => _EditHouseScreenState();
 }
 
-class _EditProductScreenState extends State<EditProductScreen> {
+class _EditHouseScreenState extends State<EditHouseScreen> {
   final _priceFocusNode = FocusNode();
   final _descriptionFocusNode = FocusNode();
   final _imageUrlController = TextEditingController();
   final _imageUrlFocusNode = FocusNode();
   final _form = GlobalKey<FormState>();
-  var _editedProduct = Product(
+  var _editedHouse = House(
     id: null,
     title: '',
     price: 0,
@@ -44,16 +44,16 @@ class _EditProductScreenState extends State<EditProductScreen> {
     if (_isInit) {
       final productId = ModalRoute.of(context).settings.arguments as String;
       if (productId != null) {
-        _editedProduct =
-            Provider.of<Products>(context, listen: false).findById(productId);
+        _editedHouse =
+            Provider.of<Houses>(context, listen: false).findById(productId);
         _initValues = {
-          'title': _editedProduct.title,
-          'description': _editedProduct.description,
-          'price': _editedProduct.price.toString(),
+          'title': _editedHouse.title,
+          'description': _editedHouse.description,
+          'price': _editedHouse.price.toString(),
           // 'imageUrl': _editedProduct.imageUrl,
           'imageUrl': '',
         };
-        _imageUrlController.text = _editedProduct.imageUrl;
+        _imageUrlController.text = _editedHouse.imageUrl;
       }
     }
     _isInit = false;
@@ -92,13 +92,13 @@ class _EditProductScreenState extends State<EditProductScreen> {
     setState(() {
       _isLoading = true;
     });
-    if (_editedProduct.id != null) {
-      await Provider.of<Products>(context, listen: false)
-          .updateProduct(_editedProduct.id, _editedProduct);
+    if (_editedHouse.id != null) {
+      await Provider.of<Houses>(context, listen: false)
+          .updateHouse(_editedHouse.id, _editedHouse);
     } else {
       try {
-        await Provider.of<Products>(context, listen: false)
-            .addProduct(_editedProduct);
+        await Provider.of<Houses>(context, listen: false)
+            .addHouse(_editedHouse);
       } catch (error) {
         await showDialog(
           context: context,
@@ -166,13 +166,13 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         return null;
                       },
                       onSaved: (value) {
-                        _editedProduct = Product(
+                        _editedHouse = House(
                             title: value,
-                            price: _editedProduct.price,
-                            description: _editedProduct.description,
-                            imageUrl: _editedProduct.imageUrl,
-                            id: _editedProduct.id,
-                            isFavorite: _editedProduct.isFavorite);
+                            price: _editedHouse.price,
+                            description: _editedHouse.description,
+                            imageUrl: _editedHouse.imageUrl,
+                            id: _editedHouse.id,
+                            isFavorite: _editedHouse.isFavorite);
                       },
                     ),
                     TextFormField(
@@ -198,13 +198,13 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         return null;
                       },
                       onSaved: (value) {
-                        _editedProduct = Product(
-                            title: _editedProduct.title,
+                        _editedHouse = House(
+                            title: _editedHouse.title,
                             price: double.parse(value),
-                            description: _editedProduct.description,
-                            imageUrl: _editedProduct.imageUrl,
-                            id: _editedProduct.id,
-                            isFavorite: _editedProduct.isFavorite);
+                            description: _editedHouse.description,
+                            imageUrl: _editedHouse.imageUrl,
+                            id: _editedHouse.id,
+                            isFavorite: _editedHouse.isFavorite);
                       },
                     ),
                     TextFormField(
@@ -223,13 +223,13 @@ class _EditProductScreenState extends State<EditProductScreen> {
                         return null;
                       },
                       onSaved: (value) {
-                        _editedProduct = Product(
-                          title: _editedProduct.title,
-                          price: _editedProduct.price,
+                        _editedHouse = House(
+                          title: _editedHouse.title,
+                          price: _editedHouse.price,
                           description: value,
-                          imageUrl: _editedProduct.imageUrl,
-                          id: _editedProduct.id,
-                          isFavorite: _editedProduct.isFavorite,
+                          imageUrl: _editedHouse.imageUrl,
+                          id: _editedHouse.id,
+                          isFavorite: _editedHouse.isFavorite,
                         );
                       },
                     ),
@@ -284,13 +284,13 @@ class _EditProductScreenState extends State<EditProductScreen> {
                               return null;
                             },
                             onSaved: (value) {
-                              _editedProduct = Product(
-                                title: _editedProduct.title,
-                                price: _editedProduct.price,
-                                description: _editedProduct.description,
+                              _editedHouse = House(
+                                title: _editedHouse.title,
+                                price: _editedHouse.price,
+                                description: _editedHouse.description,
                                 imageUrl: value,
-                                id: _editedProduct.id,
-                                isFavorite: _editedProduct.isFavorite,
+                                id: _editedHouse.id,
+                                isFavorite: _editedHouse.isFavorite,
                               );
                             },
                           ),

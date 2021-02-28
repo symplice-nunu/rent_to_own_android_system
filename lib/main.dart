@@ -3,15 +3,15 @@ import 'package:provider/provider.dart';
 
 import './screens/splash_screen.dart';
 import './screens/cart_screen.dart';
-import './screens/products_overview_screen.dart';
-import './screens/product_detail_screen.dart';
-import './providers/products.dart';
+import 'screens/houses_overview_screen.dart';
+import 'screens/house_detail_screen.dart';
+import 'providers/houses.dart';
 import './providers/cart.dart';
 import './providers/orders.dart';
 import './providers/auth.dart';
 import './screens/orders_screen.dart';
-import './screens/user_products_screen.dart';
-import './screens/edit_product_screen.dart';
+import 'screens/user_houses_screen.dart';
+import 'screens/edit_house_screen.dart';
 import './screens/auth_screen.dart';
 import './helpers/custom_route.dart';
 
@@ -25,8 +25,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: Auth(),
         ),
-        ChangeNotifierProxyProvider<Auth, Products>(
-          builder: (ctx, auth, previousProducts) => Products(
+        // ignore: missing_required_param
+        ChangeNotifierProxyProvider<Auth, Houses>(
+          // ignore: deprecated_member_use
+          builder: (ctx, auth, previousProducts) => Houses(
             auth.token,
             auth.userId,
             previousProducts == null ? [] : previousProducts.items,
@@ -35,7 +37,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(
           value: Cart(),
         ),
+        // ignore: missing_required_param
         ChangeNotifierProxyProvider<Auth, Orders>(
+          // ignore: deprecated_member_use
           builder: (ctx, auth, previousOrders) => Orders(
             auth.token,
             auth.userId,
@@ -45,7 +49,7 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer<Auth>(
         builder: (ctx, auth, _) => MaterialApp(
-          title: 'Smart Health Prediction',
+          title: 'Rent To Own Android System',
           theme: ThemeData(
             primarySwatch: Colors.purple,
             accentColor: Colors.deepOrange,
@@ -58,7 +62,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           home: auth.isAuth
-              ? ProductsOverviewScreen()
+              ? HousesOverviewScreen()
               : FutureBuilder(
             future: auth.tryAutoLogin(),
             builder: (ctx, authResultSnapshot) =>
@@ -68,11 +72,11 @@ class MyApp extends StatelessWidget {
                 : AuthScreen(),
           ),
           routes: {
-            ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+            HouseDetailScreen.routeName: (ctx) => HouseDetailScreen(),
             CartScreen.routeName: (ctx) => CartScreen(),
             OrdersScreen.routeName: (ctx) => OrdersScreen(),
-            UserProductsScreen.routeName: (ctx) => UserProductsScreen(),
-            EditProductScreen.routeName: (ctx) => EditProductScreen(),
+            UserHousesScreen.routeName: (ctx) => UserHousesScreen(),
+            EditHouseScreen.routeName: (ctx) => EditHouseScreen(),
           },
         ),
       ),

@@ -43,9 +43,9 @@ class AuthScreen extends StatelessWidget {
                 children: <Widget>[
                   Flexible(
                     child: Container(
-                      margin: EdgeInsets.only(bottom: 20.0),
+                      margin: EdgeInsets.only(bottom: 30.0),
                       padding:
-                          EdgeInsets.symmetric(vertical: 8.0, horizontal: 94.0),
+                          EdgeInsets.symmetric(vertical: 3.0, horizontal: 84.0),
                       transform: Matrix4.rotationZ(-8 * pi / 180)
                         ..translate(-10.0),
                       // ..translate(-10.0),
@@ -137,6 +137,7 @@ class _AuthCardState extends State<AuthCard>
 
   @override
   void dispose() {
+    // ignore: todo
     // TODO: implement dispose
     super.dispose();
     _controller.dispose();
@@ -247,6 +248,7 @@ class _AuthCardState extends State<AuthCard>
                 TextFormField(
                   decoration: InputDecoration(labelText: 'E-Mail'),
                   keyboardType: TextInputType.emailAddress,
+                  // ignore: missing_return
                   validator: (value) {
                     if (value.isEmpty || !value.contains('@')) {
                       return 'Invalid email!';
@@ -260,6 +262,7 @@ class _AuthCardState extends State<AuthCard>
                   decoration: InputDecoration(labelText: 'Password'),
                   obscureText: true,
                   controller: _passwordController,
+                  // ignore: missing_return
                   validator: (value) {
                     if (value.isEmpty || value.length < 5) {
                       return 'Password is too short!';
@@ -286,6 +289,7 @@ class _AuthCardState extends State<AuthCard>
                             InputDecoration(labelText: 'Confirm Password'),
                         obscureText: true,
                         validator: _authMode == AuthMode.Signup
+                            // ignore: missing_return
                             ? (value) {
                                 if (value != _passwordController.text) {
                                   return 'Passwords do not match!';

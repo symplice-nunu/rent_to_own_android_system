@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../screens/product_detail_screen.dart';
-import '../providers/product.dart';
+import '../screens/house_detail_screen.dart';
+import '../providers/house.dart';
 import '../providers/cart.dart';
 import '../providers/auth.dart';
 
-class ProductItem extends StatelessWidget {
+class HouseItem extends StatelessWidget {
   // final String id;
   // final String title;
   // final String imageUrl;
@@ -15,7 +15,7 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(context, listen: false);
+    final product = Provider.of<House>(context, listen: false);
     final cart = Provider.of<Cart>(context, listen: false);
     final authData = Provider.of<Auth>(context, listen: false);
     return ClipRRect(
@@ -24,7 +24,7 @@ class ProductItem extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             Navigator.of(context).pushNamed(
-              ProductDetailScreen.routeName,
+              HouseDetailScreen.routeName,
               arguments: product.id,
             );
           },
@@ -39,7 +39,7 @@ class ProductItem extends StatelessWidget {
         ),
         footer: GridTileBar(
           backgroundColor: Colors.black87,
-          leading: Consumer<Product>(
+          leading: Consumer<House>(
             builder: (ctx, product, _) => IconButton(
                   icon: Icon(
                     product.isFavorite ? Icons.favorite : Icons.favorite_border,
