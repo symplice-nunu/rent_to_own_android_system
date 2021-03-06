@@ -5,16 +5,16 @@ import 'package:http/http.dart' as http;
 
 class House with ChangeNotifier {
   final String id;
-  final String title;
-  final String description;
+  final String villagename;
+  final String housedescription;
   final double price;
   final String imageUrl;
   bool isFavorite;
 
   House({
     @required this.id,
-    @required this.title,
-    @required this.description,
+    @required this.villagename,
+    @required this.housedescription,
     @required this.price,
     @required this.imageUrl,
     this.isFavorite = false,
@@ -30,7 +30,8 @@ class House with ChangeNotifier {
     isFavorite = !isFavorite;
     notifyListeners();
     final url =
-        'https://popishop-24d25.firebaseio.com/userFavorites/$userId/$id.json?auth=$token';
+        // 'https://rtotest-891ba-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json?auth=$token';
+        'https://rent-to-own-6688f-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json?auth=$token';
     try {
       final response = await http.put(
         url,

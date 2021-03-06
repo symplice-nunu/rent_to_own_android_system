@@ -63,8 +63,9 @@ class AuthScreen extends StatelessWidget {
                       child: Text(
                         'Rent To Own',
                         style: TextStyle(
+                          // color: Colors.black,
                           color: Theme.of(context).accentTextTheme.title.color,
-                          fontSize: 20,
+                          fontSize: 18,
                           fontFamily: 'Anton',
                           fontWeight: FontWeight.normal,
                         ),

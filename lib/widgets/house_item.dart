@@ -7,15 +7,10 @@ import '../providers/cart.dart';
 import '../providers/auth.dart';
 
 class HouseItem extends StatelessWidget {
-  // final String id;
-  // final String title;
-  // final String imageUrl;
-
-  // ProductItem(this.id, this.title, this.imageUrl);
-
+  
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<House>(context, listen: false);
+    final house = Provider.of<House>(context, listen: false);
     final cart = Provider.of<Cart>(context, listen: false);
     final authData = Provider.of<Auth>(context, listen: false);
     return ClipRRect(
@@ -25,14 +20,14 @@ class HouseItem extends StatelessWidget {
           onTap: () {
             Navigator.of(context).pushNamed(
               HouseDetailScreen.routeName,
-              arguments: product.id,
+              arguments: house.id,
             );
           },
           child: Hero(
-            tag: product.id,
+            tag: house.id,
             child: FadeInImage(
               placeholder: AssetImage('assets/images/product-placeholder.png'),
-              image: NetworkImage(product.imageUrl),
+              image: NetworkImage(house.imageUrl),
               fit: BoxFit.cover,
             ),
           ),
@@ -54,7 +49,7 @@ class HouseItem extends StatelessWidget {
                 ),
           ),
           title: Text(
-            product.title,
+            house.villagename,
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
@@ -62,7 +57,7 @@ class HouseItem extends StatelessWidget {
               Icons.shopping_cart,
             ),
             onPressed: () {
-              cart.addItem(product.id, product.price, product.title);
+              cart.addItem(house.id, house.price, house.villagename);
               Scaffold.of(context).hideCurrentSnackBar();
               Scaffold.of(context).showSnackBar(
                 SnackBar(
@@ -73,7 +68,7 @@ class HouseItem extends StatelessWidget {
                   action: SnackBarAction(
                     label: 'UNDO',
                     onPressed: () {
-                      cart.removeSingleItem(product.id);
+                      cart.removeSingleItem(house.id);
                     },
                   ),
                 ),

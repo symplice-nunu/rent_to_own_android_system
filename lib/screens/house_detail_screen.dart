@@ -4,31 +4,26 @@ import 'package:provider/provider.dart';
 import '../providers/houses.dart';
 
 class HouseDetailScreen extends StatelessWidget {
-  // final String title;
-  // final double price;
-
-  // ProductDetailScreen(this.title, this.price);
-  static const routeName = '/product-detail';
+  
+  static const routeName = '/house-detail';
 
   @override
   Widget build(BuildContext context) {
     final productId =
-        ModalRoute.of(context).settings.arguments as String; // is the id!
+        ModalRoute.of(context).settings.arguments as String; 
     final loadedHouse = Provider.of<Houses>(
       context,
       listen: false,
     ).findById(productId);
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(loadedProduct.title),
-      // ),
+      
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
             expandedHeight: 300,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(loadedHouse.title),
+              title: Text(loadedHouse.villagename),
               background: Hero(
                 tag: loadedHouse.id,
                 child: Image.network(
@@ -57,7 +52,7 @@ class HouseDetailScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   width: double.infinity,
                   child: Text(
-                    loadedHouse.description,
+                    loadedHouse.housedescription,
                     textAlign: TextAlign.center,
                     softWrap: true,
                   ),

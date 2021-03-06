@@ -55,11 +55,11 @@ class Houses with ChangeNotifier {
   }
 
   List<House> get favoriteItems {
-    return _items.where((prodItem) => prodItem.isFavorite).toList();
+    return _items.where((housItem) => housItem.isFavorite).toList();
   }
 
   House findById(String id) {
-    return _items.firstWhere((prod) => prod.id == id);
+    return _items.firstWhere((hous) => hous.id == id);
   }
 
   // void showFavoritesOnly() {
@@ -75,7 +75,8 @@ class Houses with ChangeNotifier {
   Future<void> fetchAndSetHouses([bool filterByUser = false]) async {
     final filterString = filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
     var url =
-        'https://popishop-24d25.firebaseio.com/products.json?auth=$authToken&$filterString';
+        // 'https://rtotest-891ba-default-rtdb.firebaseio.com/houses.json?auth=$authToken&$filterString';
+        'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses.json?auth=$authToken&$filterString';
     try {
       final response = await http.get(url);
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
@@ -83,19 +84,20 @@ class Houses with ChangeNotifier {
         return;
       }
       url =
-          'https://popishop-24d25.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
+          // 'https://rtotest-891ba-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
+          'https://rent-to-own-6688f-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
       final favoriteResponse = await http.get(url);
       final favoriteData = json.decode(favoriteResponse.body);
       final List<House> loadedHouses = [];
-      extractedData.forEach((prodId, prodData) {
+      extractedData.forEach((housId, housData) {
         loadedHouses.add(House(
-          id: prodId,
-          title: prodData['title'],
-          description: prodData['description'],
-          price: prodData['price'],
+          id: housId,
+          villagename: housData['villagename'],
+          housedescription: housData['housedescription'],
+          price: housData['price'],
           isFavorite:
-              favoriteData == null ? false : favoriteData[prodId] ?? false,
-          imageUrl: prodData['imageUrl'],
+              favoriteData == null ? false : favoriteData[housId] ?? false,
+          imageUrl: housData['imageUrl'],
         ));
       });
       _items = loadedHouses;
@@ -107,27 +109,28 @@ class Houses with ChangeNotifier {
 
   Future<void> addHouse(House house) async {
     final url =
-        'https://popishop-24d25.firebaseio.com/products.json?auth=$authToken';
+        // 'https://rtotest-891ba-default-rtdb.firebaseio.com/houses.json?auth=$authToken';
+         'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses.json?auth=$authToken';
     try {
       final response = await http.post(
         url,
         body: json.encode({
-          'title': house.title,
-          'description': house.description,
+          'villagename': house.villagename,
+          'housedescription': house.housedescription,
           'imageUrl': house.imageUrl,
           'price': house.price,
           'creatorId': userId,
         }),
       );
       final newHouse = House(
-        title: house.title,
-        description: house.description,
+        villagename: house.villagename,
+        housedescription: house.housedescription,
         price: house.price,
         imageUrl: house.imageUrl,
         id: json.decode(response.body)['name'],
       );
       _items.add(newHouse);
-      // _items.insert(0, newProduct); // at the start of the list
+      // _items.insert(0, newHouse); // at the start of the list
       notifyListeners();
     } catch (error) {
       print(error);
@@ -139,11 +142,12 @@ class Houses with ChangeNotifier {
     final prodIndex = _items.indexWhere((prod) => prod.id == id);
     if (prodIndex >= 0) {
       final url =
-          'https://popishop-24d25.firebaseio.com/products/$id.json?auth=$authToken';
+          // 'https://rtotest-891ba-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
+          'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
       await http.patch(url,
           body: json.encode({
-            'title': newHouse.title,
-            'description': newHouse.description,
+            'villagename': newHouse.villagename,
+            'housedescription': newHouse.housedescription,
             'imageUrl': newHouse.imageUrl,
             'price': newHouse.price
           }));
@@ -156,7 +160,8 @@ class Houses with ChangeNotifier {
 
   Future<void> deleteHouse(String id) async {
     final url =
-        'https://popishop-24d25.firebaseio.com/products/$id.json?auth=$authToken';
+        // 'https://rtotest-891ba-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
+        'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
     final existingHouseIndex = _items.indexWhere((prod) => prod.id == id);
     var existingHouse = _items[existingHouseIndex];
     _items.removeAt(existingHouseIndex);

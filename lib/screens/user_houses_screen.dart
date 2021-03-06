@@ -7,7 +7,7 @@ import '../widgets/app_drawer.dart';
 import './edit_house_screen.dart';
 
 class UserHousesScreen extends StatelessWidget {
-  static const routeName = '/user-products';
+  static const routeName = '/user-houses';
 
   Future<void> _refreshHouses(BuildContext context) async {
     await Provider.of<Houses>(context, listen: false)
@@ -16,7 +16,7 @@ class UserHousesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final HousesData = Provider.of<Houses>(context);
+   
     print('rebuilding...');
     return Scaffold(
       appBar: AppBar(
@@ -41,16 +41,16 @@ class UserHousesScreen extends StatelessWidget {
                 : RefreshIndicator(
                     onRefresh: () => _refreshHouses(context),
                     child: Consumer<Houses>(
-                      builder: (ctx, productsData, _) => Padding(
+                      builder: (ctx, housesData, _) => Padding(
                             padding: EdgeInsets.all(8),
                             child: ListView.builder(
-                              itemCount: productsData.items.length,
+                              itemCount: housesData.items.length,
                               itemBuilder: (_, i) => Column(
                                     children: [
                                       UserHouseItem(
-                                        productsData.items[i].id,
-                                        productsData.items[i].title,
-                                        productsData.items[i].imageUrl,
+                                        housesData.items[i].id,
+                                        housesData.items[i].villagename,
+                                        housesData.items[i].imageUrl,
                                       ),
                                       Divider(),
                                     ],

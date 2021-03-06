@@ -5,7 +5,7 @@ import '../providers/house.dart';
 import '../providers/houses.dart';
 
 class EditHouseScreen extends StatefulWidget {
-  static const routeName = '/edit-product';
+  static const routeName = '/edit-house';
 
   @override
   _EditHouseScreenState createState() => _EditHouseScreenState();
@@ -19,14 +19,14 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
   final _form = GlobalKey<FormState>();
   var _editedHouse = House(
     id: null,
-    title: '',
+    villagename: '',
     price: 0,
-    description: '',
+    housedescription: '',
     imageUrl: '',
   );
   var _initValues = {
-    'title': '',
-    'description': '',
+    'villagename': '',
+    'housedescription': '',
     'price': '',
     'imageUrl': '',
   };
@@ -42,15 +42,15 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
   @override
   void didChangeDependencies() {
     if (_isInit) {
-      final productId = ModalRoute.of(context).settings.arguments as String;
-      if (productId != null) {
+      final houseId = ModalRoute.of(context).settings.arguments as String;
+      if (houseId != null) {
         _editedHouse =
-            Provider.of<Houses>(context, listen: false).findById(productId);
+            Provider.of<Houses>(context, listen: false).findById(houseId);
         _initValues = {
-          'title': _editedHouse.title,
-          'description': _editedHouse.description,
+          'villagename': _editedHouse.villagename,
+          'housedescription': _editedHouse.housedescription,
           'price': _editedHouse.price.toString(),
-          // 'imageUrl': _editedProduct.imageUrl,
+          
           'imageUrl': '',
         };
         _imageUrlController.text = _editedHouse.imageUrl;
@@ -116,18 +116,13 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
               ),
         );
       }
-      // finally {
-      //   setState(() {
-      //     _isLoading = false;
-      //   });
-      //   Navigator.of(context).pop();
-      // }
+   
     }
     setState(() {
       _isLoading = false;
     });
     Navigator.of(context).pop();
-    // Navigator.of(context).pop();
+   
   }
 
   @override
@@ -153,8 +148,8 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
                 child: ListView(
                   children: <Widget>[
                     TextFormField(
-                      initialValue: _initValues['title'],
-                      decoration: InputDecoration(labelText: 'Title'),
+                      initialValue: _initValues['villagename'],
+                      decoration: InputDecoration(labelText: 'Village Name'),
                       textInputAction: TextInputAction.next,
                       onFieldSubmitted: (_) {
                         FocusScope.of(context).requestFocus(_priceFocusNode);
@@ -167,9 +162,9 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
                       },
                       onSaved: (value) {
                         _editedHouse = House(
-                            title: value,
+                            villagename: value,
                             price: _editedHouse.price,
-                            description: _editedHouse.description,
+                            housedescription: _editedHouse.housedescription,
                             imageUrl: _editedHouse.imageUrl,
                             id: _editedHouse.id,
                             isFavorite: _editedHouse.isFavorite);
@@ -199,23 +194,23 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
                       },
                       onSaved: (value) {
                         _editedHouse = House(
-                            title: _editedHouse.title,
+                            villagename: _editedHouse.villagename,
                             price: double.parse(value),
-                            description: _editedHouse.description,
+                            housedescription: _editedHouse.housedescription,
                             imageUrl: _editedHouse.imageUrl,
                             id: _editedHouse.id,
                             isFavorite: _editedHouse.isFavorite);
                       },
                     ),
                     TextFormField(
-                      initialValue: _initValues['description'],
-                      decoration: InputDecoration(labelText: 'Description'),
+                      initialValue: _initValues['housedescription'],
+                      decoration: InputDecoration(labelText: 'House Description'),
                       maxLines: 3,
                       keyboardType: TextInputType.multiline,
                       focusNode: _descriptionFocusNode,
                       validator: (value) {
                         if (value.isEmpty) {
-                          return 'Please enter a description.';
+                          return 'Please enter a house description.';
                         }
                         if (value.length < 10) {
                           return 'Should be at least 10 characters long.';
@@ -224,9 +219,9 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
                       },
                       onSaved: (value) {
                         _editedHouse = House(
-                          title: _editedHouse.title,
+                          villagename: _editedHouse.villagename,
                           price: _editedHouse.price,
-                          description: value,
+                          housedescription: value,
                           imageUrl: _editedHouse.imageUrl,
                           id: _editedHouse.id,
                           isFavorite: _editedHouse.isFavorite,
@@ -285,9 +280,9 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
                             },
                             onSaved: (value) {
                               _editedHouse = House(
-                                title: _editedHouse.title,
+                                villagename: _editedHouse.villagename,
                                 price: _editedHouse.price,
-                                description: _editedHouse.description,
+                                housedescription: _editedHouse.housedescription,
                                 imageUrl: value,
                                 id: _editedHouse.id,
                                 isFavorite: _editedHouse.isFavorite,
