@@ -75,8 +75,8 @@ class Houses with ChangeNotifier {
   Future<void> fetchAndSetHouses([bool filterByUser = false]) async {
     final filterString = filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
     var url =
-        // 'https://rtotest-891ba-default-rtdb.firebaseio.com/houses.json?auth=$authToken&$filterString';
-        'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses.json?auth=$authToken&$filterString';
+        'https://rtotest-891ba-default-rtdb.firebaseio.com/houses.json?auth=$authToken&$filterString';
+        // 'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses.json?auth=$authToken&$filterString';
     try {
       final response = await http.get(url);
       final extractedData = json.decode(response.body) as Map<String, dynamic>;
@@ -84,8 +84,8 @@ class Houses with ChangeNotifier {
         return;
       }
       url =
-          // 'https://rtotest-891ba-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
-          'https://rent-to-own-6688f-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
+          'https://rtotest-891ba-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
+          // 'https://rent-to-own-6688f-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
       final favoriteResponse = await http.get(url);
       final favoriteData = json.decode(favoriteResponse.body);
       final List<House> loadedHouses = [];
@@ -109,8 +109,8 @@ class Houses with ChangeNotifier {
 
   Future<void> addHouse(House house) async {
     final url =
-        // 'https://rtotest-891ba-default-rtdb.firebaseio.com/houses.json?auth=$authToken';
-         'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses.json?auth=$authToken';
+        'https://rtotest-891ba-default-rtdb.firebaseio.com/houses.json?auth=$authToken';
+        //  'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses.json?auth=$authToken';
     try {
       final response = await http.post(
         url,
@@ -142,8 +142,8 @@ class Houses with ChangeNotifier {
     final prodIndex = _items.indexWhere((prod) => prod.id == id);
     if (prodIndex >= 0) {
       final url =
-          // 'https://rtotest-891ba-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
-          'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
+          'https://rtotest-891ba-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
+          // 'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
       await http.patch(url,
           body: json.encode({
             'villagename': newHouse.villagename,
@@ -160,8 +160,8 @@ class Houses with ChangeNotifier {
 
   Future<void> deleteHouse(String id) async {
     final url =
-        // 'https://rtotest-891ba-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
-        'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
+        'https://rtotest-891ba-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
+        // 'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
     final existingHouseIndex = _items.indexWhere((prod) => prod.id == id);
     var existingHouse = _items[existingHouseIndex];
     _items.removeAt(existingHouseIndex);
