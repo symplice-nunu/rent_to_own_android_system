@@ -93,6 +93,13 @@ class Houses with ChangeNotifier {
         loadedHouses.add(House(
           id: housId,
           villagename: housData['villagename'],
+          houseno: housData['houseno'],
+          roomno: housData['roomno'],
+          saloonno: housData['saloonno'],
+          tbno: housData['tbno'],
+          kitchenno: housData['kitchenno'],
+          ehouseno: housData['ehouseno'],
+          houselocation: housData['houselocation'],
           housedescription: housData['housedescription'],
           price: housData['price'],
           isFavorite:
@@ -116,6 +123,13 @@ class Houses with ChangeNotifier {
         url,
         body: json.encode({
           'villagename': house.villagename,
+          'houseno': house.houseno,
+          'roomno': house.roomno,
+          'saloonno': house.saloonno,
+          'tbno': house.tbno,
+          'kitchenno': house.kitchenno,
+          'ehouseno': house.ehouseno,
+          'houselocation': house.houselocation,
           'housedescription': house.housedescription,
           'imageUrl': house.imageUrl,
           'price': house.price,
@@ -124,6 +138,13 @@ class Houses with ChangeNotifier {
       );
       final newHouse = House(
         villagename: house.villagename,
+        houseno: house.houseno,
+        roomno: house.roomno,
+        saloonno: house.saloonno,
+        tbno: house.tbno,
+        kitchenno: house.kitchenno,
+        ehouseno: house.ehouseno,
+        houselocation: house.houselocation,
         housedescription: house.housedescription,
         price: house.price,
         imageUrl: house.imageUrl,
@@ -147,6 +168,13 @@ class Houses with ChangeNotifier {
       await http.patch(url,
           body: json.encode({
             'villagename': newHouse.villagename,
+            'houseno': newHouse.houseno,
+            'roomno': newHouse.roomno,
+            'saloonno': newHouse.saloonno,
+            'tbno': newHouse.tbno,
+            'kitchenno': newHouse.kitchenno,
+            'ehouseno': newHouse.ehouseno,
+            'houselocation': newHouse.houselocation,
             'housedescription': newHouse.housedescription,
             'imageUrl': newHouse.imageUrl,
             'price': newHouse.price

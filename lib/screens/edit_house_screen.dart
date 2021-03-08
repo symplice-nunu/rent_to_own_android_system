@@ -20,12 +20,26 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
   var _editedHouse = House(
     id: null,
     villagename: '',
+    houseno: '',
+    roomno: '',
+    saloonno: '',
+    tbno: '',
+    kitchenno: '',
+    ehouseno: '',
+    houselocation: '',
     price: 0,
     housedescription: '',
     imageUrl: '',
   );
   var _initValues = {
     'villagename': '',
+    'houseno': '',
+    'roomno': '',
+    'saloonno': '',
+    'tbno': '',
+    'kitchen': '',
+    'ehouseno': '',
+    'houselocation': '',
     'housedescription': '',
     'price': '',
     'imageUrl': '',
@@ -48,6 +62,13 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
             Provider.of<Houses>(context, listen: false).findById(houseId);
         _initValues = {
           'villagename': _editedHouse.villagename,
+          'houseno': _editedHouse.houseno,
+          'roomno': _editedHouse.roomno,
+          'saloonno': _editedHouse.saloonno,
+          'tbno': _editedHouse.tbno,
+          'kitchenno': _editedHouse.kitchenno,
+          'ehouseno': _editedHouse.ehouseno,
+          'houselocation': _editedHouse.houselocation,
           'housedescription': _editedHouse.housedescription,
           'price': _editedHouse.price.toString(),
           
@@ -163,6 +184,223 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
                       onSaved: (value) {
                         _editedHouse = House(
                             villagename: value,
+                            houseno: _editedHouse.houseno,
+                            roomno: _editedHouse.roomno,
+                            saloonno: _editedHouse.saloonno,
+                            tbno: _editedHouse.tbno,
+                            kitchenno: _editedHouse.kitchenno,
+                            ehouseno: _editedHouse.ehouseno,
+                            houselocation: _editedHouse.houselocation,
+                            price: _editedHouse.price,
+                            housedescription: _editedHouse.housedescription,
+                            imageUrl: _editedHouse.imageUrl,
+                            id: _editedHouse.id,
+                            isFavorite: _editedHouse.isFavorite);
+                      },
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['houseno'],
+                      decoration: InputDecoration(labelText: 'House Number'),
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_priceFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please provide a House Number.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedHouse = House(
+                            villagename: _editedHouse.villagename,
+                            houseno: value,
+                            roomno: _editedHouse.roomno,
+                            saloonno: _editedHouse.saloonno,
+                            tbno: _editedHouse.tbno,
+                            kitchenno: _editedHouse.kitchenno,
+                            ehouseno: _editedHouse.ehouseno,
+                            houselocation: _editedHouse.houselocation,
+                            price: _editedHouse.price,
+                            housedescription: _editedHouse.housedescription,
+                            imageUrl: _editedHouse.imageUrl,
+                            id: _editedHouse.id,
+                            isFavorite: _editedHouse.isFavorite);
+                      },
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['roomno'],
+                      decoration: InputDecoration(labelText: 'Number of Rooms'),
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_priceFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please provide a Number Rooms.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedHouse = House(
+                            villagename: _editedHouse.villagename,
+                            houseno: _editedHouse.houseno,
+                            roomno: value,
+                            saloonno: _editedHouse.saloonno,
+                            tbno: _editedHouse.tbno,
+                            kitchenno: _editedHouse.kitchenno,
+                            ehouseno: _editedHouse.ehouseno,
+                            houselocation: _editedHouse.houselocation,
+                            price: _editedHouse.price,
+                            housedescription: _editedHouse.housedescription,
+                            imageUrl: _editedHouse.imageUrl,
+                            id: _editedHouse.id,
+                            isFavorite: _editedHouse.isFavorite);
+                      },
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['saloonno'],
+                      decoration: InputDecoration(labelText: 'Number of Saloons'),
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_priceFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please provide a Number Saloons.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedHouse = House(
+                            villagename: _editedHouse.villagename,
+                            houseno: _editedHouse.houseno,
+                            roomno: _editedHouse.roomno,
+                            saloonno: value,
+                            tbno: _editedHouse.tbno,
+                            kitchenno: _editedHouse.kitchenno,
+                            ehouseno: _editedHouse.ehouseno,
+                            houselocation: _editedHouse.houselocation,
+                            price: _editedHouse.price,
+                            housedescription: _editedHouse.housedescription,
+                            imageUrl: _editedHouse.imageUrl,
+                            id: _editedHouse.id,
+                            isFavorite: _editedHouse.isFavorite);
+                      },
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['tbno'],
+                      decoration: InputDecoration(labelText: 'Number of Toilets and Bathroms'),
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_priceFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please provide a Number Toilets and Bathroms.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedHouse = House(
+                            villagename: _editedHouse.villagename,
+                            houseno: _editedHouse.houseno,
+                            roomno: _editedHouse.roomno,
+                            saloonno: _editedHouse.saloonno,
+                            tbno: value,
+                            kitchenno: _editedHouse.kitchenno,
+                            ehouseno: _editedHouse.ehouseno,
+                            houselocation: _editedHouse.houselocation,
+                            price: _editedHouse.price,
+                            housedescription: _editedHouse.housedescription,
+                            imageUrl: _editedHouse.imageUrl,
+                            id: _editedHouse.id,
+                            isFavorite: _editedHouse.isFavorite);
+                      },
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['kitchenno'],
+                      decoration: InputDecoration(labelText: 'Number of kitchens'),
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_priceFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please provide a Number Kitchens.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedHouse = House(
+                            villagename: _editedHouse.villagename,
+                            houseno: _editedHouse.houseno,
+                            roomno: _editedHouse.roomno,
+                            saloonno: _editedHouse.saloonno,
+                            tbno: _editedHouse.tbno,
+                            kitchenno: value,
+                            ehouseno: _editedHouse.ehouseno,
+                            houselocation: _editedHouse.houselocation,
+                            price: _editedHouse.price,
+                            housedescription: _editedHouse.housedescription,
+                            imageUrl: _editedHouse.imageUrl,
+                            id: _editedHouse.id,
+                            isFavorite: _editedHouse.isFavorite);
+                      },
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['ehouseno'],
+                      decoration: InputDecoration(labelText: 'Number of Extra Houses'),
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_priceFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please provide a Number Extra Houses.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedHouse = House(
+                            villagename: _editedHouse.villagename,
+                            houseno: _editedHouse.houseno,
+                            roomno: _editedHouse.roomno,
+                            saloonno: _editedHouse.saloonno,
+                            tbno: _editedHouse.tbno,
+                            kitchenno: _editedHouse.kitchenno,
+                            ehouseno: value,
+                            houselocation: _editedHouse.houselocation,
+                            price: _editedHouse.price,
+                            housedescription: _editedHouse.housedescription,
+                            imageUrl: _editedHouse.imageUrl,
+                            id: _editedHouse.id,
+                            isFavorite: _editedHouse.isFavorite);
+                      },
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['houselocation'],
+                      decoration: InputDecoration(labelText: 'House Location'),
+                      textInputAction: TextInputAction.next,
+                      onFieldSubmitted: (_) {
+                        FocusScope.of(context).requestFocus(_priceFocusNode);
+                      },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please provide a House Location.';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        _editedHouse = House(
+                            villagename: _editedHouse.villagename,
+                            houseno: _editedHouse.houseno,
+                            roomno: _editedHouse.roomno,
+                            saloonno: _editedHouse.saloonno,
+                            tbno: _editedHouse.tbno,
+                            kitchenno: _editedHouse.kitchenno,
+                            ehouseno: _editedHouse.ehouseno,
+                            houselocation: value,
                             price: _editedHouse.price,
                             housedescription: _editedHouse.housedescription,
                             imageUrl: _editedHouse.imageUrl,
@@ -195,6 +433,13 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
                       onSaved: (value) {
                         _editedHouse = House(
                             villagename: _editedHouse.villagename,
+                            houseno: _editedHouse.houseno,
+                            roomno: _editedHouse.roomno,
+                            saloonno: _editedHouse.saloonno,
+                            tbno: _editedHouse.tbno,
+                            kitchenno: _editedHouse.kitchenno,
+                            ehouseno: _editedHouse.ehouseno,
+                            houselocation: _editedHouse.houselocation,
                             price: double.parse(value),
                             housedescription: _editedHouse.housedescription,
                             imageUrl: _editedHouse.imageUrl,
@@ -220,6 +465,13 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
                       onSaved: (value) {
                         _editedHouse = House(
                           villagename: _editedHouse.villagename,
+                          houseno: _editedHouse.houseno,
+                          roomno: _editedHouse.roomno,
+                          saloonno: _editedHouse.saloonno,
+                          tbno: _editedHouse.tbno,
+                          kitchenno: _editedHouse.kitchenno,
+                          ehouseno: _editedHouse.ehouseno,
+                          houselocation: _editedHouse.houselocation,
                           price: _editedHouse.price,
                           housedescription: value,
                           imageUrl: _editedHouse.imageUrl,
@@ -281,6 +533,13 @@ class _EditHouseScreenState extends State<EditHouseScreen> {
                             onSaved: (value) {
                               _editedHouse = House(
                                 villagename: _editedHouse.villagename,
+                                houseno: _editedHouse.houseno,
+                                roomno: _editedHouse.roomno,
+                                saloonno: _editedHouse.saloonno,
+                                tbno: _editedHouse.tbno,
+                                kitchenno: _editedHouse.kitchenno,
+                                ehouseno: _editedHouse.ehouseno,
+                                houselocation: _editedHouse.houselocation,
                                 price: _editedHouse.price,
                                 housedescription: _editedHouse.housedescription,
                                 imageUrl: value,
