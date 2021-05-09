@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rent_to_own_android_system/screens/homee.dart';
 
 import '../screens/orders_screen.dart';
 import '../screens/user_houses_screen.dart';
@@ -26,8 +27,8 @@ class AppDrawer extends StatelessWidget {
           ),
           Divider(),
           ListTile(
-            leading: Icon(Icons.payment),
-            title: Text('Orders'),
+            leading: Icon(Icons.receipt_long),
+            title: Text('Requested Houses'),
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(OrdersScreen.routeName);
@@ -45,6 +46,16 @@ class AppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(UserHousesScreen.routeName);
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.money_off_csred_rounded),
+            title: Text('Return Bail'),
+            onTap: () {
+              Navigator.of(context)
+                  .pushReplacementNamed(HomeePage.routeName);
+              
             },
           ),
           Divider(),

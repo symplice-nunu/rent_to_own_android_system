@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rent_to_own_android_system/screens/homee.dart';
 
 import './screens/splash_screen.dart';
 import './screens/cart_screen.dart';
@@ -77,6 +78,7 @@ class MyApp extends StatelessWidget {
             OrdersScreen.routeName: (ctx) => OrdersScreen(),
             UserHousesScreen.routeName: (ctx) => UserHousesScreen(),
             EditHouseScreen.routeName: (ctx) => EditHouseScreen(),
+            HomeePage.routeName: (ctx) => HomeePage(),
           },
         ),
       ),

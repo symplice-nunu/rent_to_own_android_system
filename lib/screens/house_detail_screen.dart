@@ -23,7 +23,11 @@ class HouseDetailScreen extends StatelessWidget {
             expandedHeight: 300,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(loadedHouse.villagename),
+              
+              title: 
+              Text(
+                loadedHouse.villagename,
+                ),
               background: Hero(
                 tag: loadedHouse.id,
                 child: Image.network(
@@ -33,6 +37,7 @@ class HouseDetailScreen extends StatelessWidget {
               ),
             ),
           ),
+          
           SliverList(
             delegate: SliverChildListDelegate(
               [
@@ -40,29 +45,281 @@ class HouseDetailScreen extends StatelessWidget {
                 Text(
                   '\$${loadedHouse.price}',
                   style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 20,
+                    color: Colors.teal,
+                    fontSize: 25,
                   ),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
+                Divider(),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   width: double.infinity,
                   child: Text(
-                    loadedHouse.housedescription,
+                
+                    'House Description',
+                    
+                    style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.black,
+                    ),
                     textAlign: TextAlign.center,
                     softWrap: true,
                   ),
                 ),
-                SizedBox(height: 800,),
+                SizedBox(height: 13,),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  width: double.infinity,
+                  child: Text(
+                
+                    loadedHouse.housedescription,
+                    
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blueAccent,
+                    ),
+                    // textAlign: TextAlign.center,
+                    softWrap: true,
+                  ),
+                ),
+                SizedBox(height: 10,),
+                Divider(),
+                 Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  width: double.infinity,
+                  child: Text(
+                
+                    'House ID',
+                    
+                    style: TextStyle(
+                      fontSize: 19,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.start,
+                    softWrap: true,
+                  ),
+                ),
+                // SizedBox(height: 2,),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  width: double.infinity,
+                  child: Text(
+                  
+                    loadedHouse.houseno,
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.blueAccent,
+
+                    ),
+                    textAlign: TextAlign.right,
+                    softWrap: true,
+                  ),
+                ),
+                
+                  // SizedBox(height: 10,),
+                Divider(),
+                 Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  width: double.infinity,
+                  child: Text(
+                
+                    'Number of Rooms',
+                    
+                    style: TextStyle(
+                      fontSize: 19,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.start,
+                    softWrap: true,
+                  ),
+                ),
+                // SizedBox(height: 13,),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  width: double.infinity,
+                  child: Text(
+                  
+                    loadedHouse.roomno,
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.blueAccent,
+                    ),
+                    textAlign: TextAlign.right,
+                    softWrap: true,
+                  ),
+                ),
+                // SizedBox(height: 10,),
+                Divider(),
+                 Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  width: double.infinity,
+                  child: Text(
+                
+                    'Number of Saloons',
+                    
+                    style: TextStyle(
+                      fontSize: 19,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.start,
+                    softWrap: true,
+                  ),
+                ),
+                // SizedBox(height: 13,),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  width: double.infinity,
+                  child: Text(
+                  
+                    loadedHouse.saloonno,
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.blueAccent,
+                    ),
+                    textAlign: TextAlign.right,
+                    softWrap: true,
+                  ),
+                ),
+                // SizedBox(height: 10,),
+                Divider(),
+                 Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  width: double.infinity,
+                  child: Text(
+                
+                    'Number of Toilets and Birthrooms',
+                    
+                    style: TextStyle(
+                      fontSize: 19,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.start,
+                    softWrap: true,
+                  ),
+                ),
+                // SizedBox(height: 13,),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  width: double.infinity,
+                  child: Text(
+                  
+                    loadedHouse.tbno,
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.blueAccent,
+                    ),
+                    textAlign: TextAlign.right,
+                    softWrap: true,
+                  ),
+                ),
+                // SizedBox(height: 10,),
+                Divider(),
+                 Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  width: double.infinity,
+                  child: Text(
+                
+                    'Number of Kitchens',
+                    
+                    style: TextStyle(
+                      fontSize: 19,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.start,
+                    softWrap: true,
+                  ),
+                ),
+                // SizedBox(height: 13,),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  width: double.infinity,
+                  child: Text(
+                  
+                    loadedHouse.kitchenno,
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.blueAccent,
+                    ),
+                    textAlign: TextAlign.right,
+                    softWrap: true,
+                  ),
+                ),
+                // SizedBox(height: 10,),
+                Divider(),
+                 Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  width: double.infinity,
+                  child: Text(
+                
+                    'Number of Extra Houses',
+                    
+                    style: TextStyle(
+                      fontSize: 19,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.start,
+                    softWrap: true,
+                  ),
+                ),
+                // SizedBox(height: 13,),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  width: double.infinity,
+                  child: Text(
+                  
+                    loadedHouse.ehouseno,
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.blueAccent,
+                    ),
+                    textAlign: TextAlign.right,
+                    softWrap: true,
+                  ),
+                ),
+                // SizedBox(height: 10,),
+                Divider(),
+                 Container(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  width: double.infinity,
+                  child: Text(
+                
+                    'House Location',
+                    
+                    style: TextStyle(
+                      fontSize: 19,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.start,
+                    softWrap: true,
+                  ),
+                ),
+                // SizedBox(height: 13,),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  width: double.infinity,
+                  child: Text(
+                  
+                    loadedHouse.houselocation,
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.teal,
+                    ),
+                    textAlign: TextAlign.right,
+                    softWrap: true,
+                  ),
+                ),
+                // SizedBox(height: 10,),
+                Divider(),
               ],
             ),
           ),
+          
         ],
       ),
+      
     );
   }
 }

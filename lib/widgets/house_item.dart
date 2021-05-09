@@ -50,32 +50,32 @@ class HouseItem extends StatelessWidget {
           ),
           title: Text(
             house.villagename,
-            textAlign: TextAlign.center,
+            // textAlign: TextAlign.center,
           ),
-          trailing: IconButton(
-            icon: Icon(
-              Icons.shopping_cart,
-            ),
-            onPressed: () {
-              cart.addItem(house.id, house.price, house.villagename);
-              Scaffold.of(context).hideCurrentSnackBar();
-              Scaffold.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    'Added item to cart!',
-                  ),
-                  duration: Duration(seconds: 2),
-                  action: SnackBarAction(
-                    label: 'UNDO',
-                    onPressed: () {
-                      cart.removeSingleItem(house.id);
-                    },
-                  ),
-                ),
-              );
-            },
-            color: Theme.of(context).accentColor,
-          ),
+          // trailing: IconButton(
+          //   icon: Icon(
+          //     Icons.shopping_cart,
+          //   ),
+          //   onPressed: () {
+          //     cart.addItem(house.id, house.price, house.villagename);
+          //     Scaffold.of(context).hideCurrentSnackBar();
+          //     Scaffold.of(context).showSnackBar(
+          //       SnackBar(
+          //         content: Text(
+          //           'House Selected to make Application',
+          //         ),
+          //         duration: Duration(seconds: 2),
+          //         action: SnackBarAction(
+          //           label: 'UNDO',
+          //           onPressed: () {
+          //             cart.removeSingleItem(house.id);
+          //           },
+          //         ),
+          //       ),
+          //     );
+          //   },
+          //   color: Theme.of(context).accentColor,
+          // ),
         ),
       ),
     );
