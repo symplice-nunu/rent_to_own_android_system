@@ -66,29 +66,29 @@ class _HousesOverviewScreenState extends State<HousesOverviewScreen> {
             ),
             itemBuilder: (_) => [
                   PopupMenuItem(
-                    child: Text('Only Favorites'),
+                    child: Text('Only Favorites House(s)'),
                     value: FilterOptions.Favorites,
                   ),
                   PopupMenuItem(
-                    child: Text('Show All'),
+                    child: Text('Show All Houses'),
                     value: FilterOptions.All,
                   ),
                 ],
           ),
-          Consumer<Cart>(
-            builder: (_, cart, ch) => Badge(
-                  child: ch,
-                  value: cart.itemCount.toString(),
-                ),
-            child: IconButton(
-              icon: Icon(
-                Icons.shopping_cart,
-              ),
-              onPressed: () {
-                Navigator.of(context).pushNamed(CartScreen.routeName);
-              },
-            ),
-          ),
+          // Consumer<Cart>(
+          //   builder: (_, cart, ch) => Badge(
+          //         child: ch,
+          //         value: cart.itemCount.toString(),
+          //       ),
+          //   child: IconButton(
+          //     icon: Icon(
+          //       Icons.shopping_cart,
+          //     ),
+          //     onPressed: () {
+          //       Navigator.of(context).pushNamed(CartScreen.routeName);
+          //     },
+          //   ),
+          // ),
         ],
       ),
       drawer: AppDrawer(),

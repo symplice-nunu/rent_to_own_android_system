@@ -18,7 +18,9 @@ class HouseDetailScreen extends StatelessWidget {
     return Scaffold(
       
       body: CustomScrollView(
+        
         slivers: <Widget>[
+          
           SliverAppBar(
             expandedHeight: 300,
             pinned: true,
