@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import '../screens/house_detail_screen.dart';
 import '../providers/house.dart';
-import '../providers/cart.dart';
 import '../providers/auth.dart';
 
 class HouseItem extends StatelessWidget {
@@ -11,7 +10,6 @@ class HouseItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final house = Provider.of<House>(context, listen: false);
-    final cart = Provider.of<Cart>(context, listen: false);
     final authData = Provider.of<Auth>(context, listen: false);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
@@ -52,30 +50,7 @@ class HouseItem extends StatelessWidget {
             house.villagename,
             // textAlign: TextAlign.center,
           ),
-          // trailing: IconButton(
-          //   icon: Icon(
-          //     Icons.shopping_cart,
-          //   ),
-          //   onPressed: () {
-          //     cart.addItem(house.id, house.price, house.villagename);
-          //     Scaffold.of(context).hideCurrentSnackBar();
-          //     Scaffold.of(context).showSnackBar(
-          //       SnackBar(
-          //         content: Text(
-          //           'House Selected to make Application',
-          //         ),
-          //         duration: Duration(seconds: 2),
-          //         action: SnackBarAction(
-          //           label: 'UNDO',
-          //           onPressed: () {
-          //             cart.removeSingleItem(house.id);
-          //           },
-          //         ),
-          //       ),
-          //     );
-          //   },
-          //   color: Theme.of(context).accentColor,
-          // ),
+         
         ),
       ),
     );

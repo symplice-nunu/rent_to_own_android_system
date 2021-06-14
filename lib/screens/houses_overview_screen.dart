@@ -4,8 +4,6 @@ import 'package:provider/provider.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/houses_grid.dart';
 import '../widgets/badge.dart';
-import '../providers/cart.dart';
-import './cart_screen.dart';
 import '../providers/houses.dart';
 
 enum FilterOptions {

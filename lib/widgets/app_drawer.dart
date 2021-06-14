@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rent_to_own_android_system/screens/homee.dart';
-
-import '../screens/orders_screen.dart';
 import '../screens/user_houses_screen.dart';
+import '../screens/user_rentagreement_screen.dart';
 import '../providers/auth.dart';
 import '../helpers/custom_route.dart';
 
@@ -30,13 +29,9 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.receipt_long),
             title: Text('Requested Houses'),
             onTap: () {
-              Navigator.of(context)
-                  .pushReplacementNamed(OrdersScreen.routeName);
-              // Navigator.of(context).pushReplacement(
-              //   CustomRoute(
-              //     builder: (ctx) => OrdersScreen(),
-              //   ),
-              // );
+              // Navigator.of(context)
+              //     .pushReplacementNamed(OrdersScreen.routeName);
+              
             },
           ),
           Divider(),
@@ -46,6 +41,15 @@ class AppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(UserHousesScreen.routeName);
+            },
+          ),
+          Divider(),
+          ListTile(
+            leading: Icon(Icons.book_online),
+            title: Text('Contract'),
+            onTap: () {
+              Navigator.of(context)
+                  .pushReplacementNamed(UserRentAgreementScreen.routeName);
             },
           ),
           Divider(),

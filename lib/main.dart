@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rent_to_own_android_system/screens/homee.dart';
-
 import './screens/splash_screen.dart';
-import './screens/cart_screen.dart';
 import 'screens/houses_overview_screen.dart';
 import 'screens/house_detail_screen.dart';
 import 'providers/houses.dart';
-import './providers/cart.dart';
-import './providers/orders.dart';
 import './providers/auth.dart';
-import './screens/orders_screen.dart';
 import 'screens/user_houses_screen.dart';
+import 'screens/user_rentagreement_screen.dart';
 import 'screens/edit_house_screen.dart';
+import 'screens/edit_rentagreement_screen.dart';
 import './screens/auth_screen.dart';
 import './helpers/custom_route.dart';
 
@@ -29,24 +26,25 @@ class MyApp extends StatelessWidget {
         // ignore: missing_required_param
         ChangeNotifierProxyProvider<Auth, Houses>(
           // ignore: deprecated_member_use
-          builder: (ctx, auth, previousProducts) => Houses(
+          builder: (ctx, auth, previousHouses) => Houses(
             auth.token,
             auth.userId,
-            previousProducts == null ? [] : previousProducts.items,
+            previousHouses == null ? [] : previousHouses.items,
+            previousHouses == null ? [] : previousHouses.itemsa,
           ),
         ),
-        ChangeNotifierProvider.value(
-          value: Cart(),
-        ),
+        // ChangeNotifierProvider.value(
+        //   value: Cart(),
+        // ),
         // ignore: missing_required_param
-        ChangeNotifierProxyProvider<Auth, Orders>(
-          // ignore: deprecated_member_use
-          builder: (ctx, auth, previousOrders) => Orders(
-            auth.token,
-            auth.userId,
-            previousOrders == null ? [] : previousOrders.orders,
-          ),
-        ),
+        // ChangeNotifierProxyProvider<Auth, Orders>(
+        //   // ignore: deprecated_member_use
+        //   builder: (ctx, auth, previousOrders) => Orders(
+        //     auth.token,
+        //     auth.userId,
+        //     previousOrders == null ? [] : previousOrders.orders,
+        //   ),
+        // ),
       ],
       child: Consumer<Auth>(
         builder: (ctx, auth, _) => MaterialApp(
@@ -74,10 +72,10 @@ class MyApp extends StatelessWidget {
           ),
           routes: {
             HouseDetailScreen.routeName: (ctx) => HouseDetailScreen(),
-            CartScreen.routeName: (ctx) => CartScreen(),
-            OrdersScreen.routeName: (ctx) => OrdersScreen(),
             UserHousesScreen.routeName: (ctx) => UserHousesScreen(),
+            UserRentAgreementScreen.routeName: (ctx) => UserRentAgreementScreen(),
             EditHouseScreen.routeName: (ctx) => EditHouseScreen(),
+            EditRentAgreementScreen.routeName: (ctx) => EditRentAgreementScreen(),
             HomeePage.routeName: (ctx) => HomeePage(),
           },
         ),
