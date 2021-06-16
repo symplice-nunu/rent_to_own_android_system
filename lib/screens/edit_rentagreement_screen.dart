@@ -22,6 +22,8 @@ class _EditRentAgreementScreenState extends State<EditRentAgreementScreen> {
     rentername: '',
     houseno: '',
     location: '',
+    price: '',
+    bail: '',
     date: '',
   );
   var _initValues = {
@@ -29,6 +31,8 @@ class _EditRentAgreementScreenState extends State<EditRentAgreementScreen> {
     'rentername': '',
     'houseno': '',
     'location': '',
+    'price': '',
+    'bail': '',
     'date': '',
   };
   var _isInit = true;
@@ -168,6 +172,8 @@ class _EditRentAgreementScreenState extends State<EditRentAgreementScreen> {
                             rentername: _editedRentAgreement.rentername,
                             houseno: _editedRentAgreement.houseno,
                             location: _editedRentAgreement.location,
+                            price: _editedRentAgreement.price,
+                            bail: _editedRentAgreement.bail,
                             date: _editedRentAgreement.date,
                             id: _editedRentAgreement.id);
                       },
@@ -191,6 +197,8 @@ class _EditRentAgreementScreenState extends State<EditRentAgreementScreen> {
                             rentername: value,
                             houseno: _editedRentAgreement.houseno,
                             location: _editedRentAgreement.location,
+                            price: _editedRentAgreement.price,
+                            bail: _editedRentAgreement.bail,
                             date: _editedRentAgreement.date,
                             id: _editedRentAgreement.id);
                       },
@@ -215,6 +223,8 @@ class _EditRentAgreementScreenState extends State<EditRentAgreementScreen> {
                             rentername: _editedRentAgreement.rentername,
                             houseno: value,
                             location: _editedRentAgreement.location,
+                            price: _editedRentAgreement.price,
+                            bail: _editedRentAgreement.bail,
                             date: _editedRentAgreement.date,
                             id: _editedRentAgreement.id);
                       },
@@ -238,6 +248,8 @@ class _EditRentAgreementScreenState extends State<EditRentAgreementScreen> {
                             rentername: _editedRentAgreement.rentername,
                             houseno: _editedRentAgreement.houseno,
                             location: value,
+                            price: _editedRentAgreement.price,
+                            bail: _editedRentAgreement.bail,
                             date: _editedRentAgreement.date,
                             id: _editedRentAgreement.id);
                       },

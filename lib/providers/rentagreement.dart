@@ -9,6 +9,8 @@ class RentAgreement with ChangeNotifier {
   final String rentername;
   final String houseno;
   final String location;
+  final String price;
+  final String bail;
   final String date;
   bool isFavorite;
 
@@ -18,6 +20,8 @@ class RentAgreement with ChangeNotifier {
     @required this.rentername,
     @required this.houseno,
     @required this.location,
+    @required this.price,
+    @required this.bail,
     @required this.date,
     this.isFavorite = false,
   });

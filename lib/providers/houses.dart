@@ -106,6 +106,8 @@ List<RentAgreement> get itemsa {
           rentername: housData['rentername'],
           houseno: housData['houseno'],
           location: housData['location'],
+          price: housData['price'],
+          bail: housData['bail'],
           date: housData['date'],
           isFavorite:
               favoriteData == null ? false : favoriteData[housId] ?? false,
@@ -176,6 +178,8 @@ Future<void> addRentAgreement(RentAgreement rentAgreement) async {
           'rentername':rentAgreement.rentername,
           'houseno': rentAgreement.houseno,
           'location': rentAgreement.location,
+          'price': "300",
+          'bail': "300",
           'date': timestamp.toIso8601String(),
           'creatorId': userId,
         }),
@@ -185,6 +189,8 @@ Future<void> addRentAgreement(RentAgreement rentAgreement) async {
         rentername: rentAgreement.rentername,
         houseno: rentAgreement.houseno,
         location: rentAgreement.location,
+        price: rentAgreement.price,
+        bail: rentAgreement.bail,
         date: rentAgreement.date,
         id: json.decode(response.body)['name'],
       );
