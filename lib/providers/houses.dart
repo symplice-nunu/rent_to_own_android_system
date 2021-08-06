@@ -43,7 +43,7 @@ List<RentAgreement> get itemsa {
   Future<void> fetchAndSetHouses([bool filterByUser = false]) async {
     final filterString = filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
     var url =
-        'https://rtotest-891ba-default-rtdb.firebaseio.com/house.json?auth=$authToken&$filterString';
+        'https://house-6dc86-default-rtdb.firebaseio.com/houses.json?auth=$authToken&$filterString';
         // 'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses.json?auth=$authToken&$filterString';
     try {
       final response = await http.get(url);
@@ -52,7 +52,7 @@ List<RentAgreement> get itemsa {
         return;
       }
       url =
-          'https://rtotest-891ba-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
+          'https://house-6dc86-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
           // 'https://rent-to-own-6688f-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
       final favoriteResponse = await http.get(url);
       final favoriteData = json.decode(favoriteResponse.body);
@@ -85,7 +85,7 @@ List<RentAgreement> get itemsa {
    Future<void> fetchAndRentAgreement([bool filterByUser = false]) async {
     final filterString = filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
     var url =
-        'https://rtotest-891ba-default-rtdb.firebaseio.com/rentagreement.json?auth=$authToken&$filterString';
+        'https://house-6dc86-default-rtdb.firebaseio.com/rentagreement.json?auth=$authToken&$filterString';
         // 'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses.json?auth=$authToken&$filterString';
     try {
       final response = await http.get(url);
@@ -94,7 +94,7 @@ List<RentAgreement> get itemsa {
         return;
       }
       url =
-          'https://rtotest-891ba-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
+          'https://house-6dc86-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
           // 'https://rent-to-own-6688f-default-rtdb.firebaseio.com/userFavorites/$userId.json?auth=$authToken';
       final favoriteResponse = await http.get(url);
       final favoriteData = json.decode(favoriteResponse.body);
@@ -123,7 +123,7 @@ List<RentAgreement> get itemsa {
 
   Future<void> addHouse(House house) async {
     final url =
-        'https://rtotest-891ba-default-rtdb.firebaseio.com/house.json?auth=$authToken';
+        'https://house-6dc86-default-rtdb.firebaseio.com/houses.json?auth=$authToken';
         //  'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses.json?auth=$authToken';
     try {
       final response = await http.post(
@@ -167,7 +167,7 @@ List<RentAgreement> get itemsa {
   }
 Future<void> addRentAgreement(RentAgreement rentAgreement) async {
     final url =
-        'https://rtotest-891ba-default-rtdb.firebaseio.com/rentagreement.json?auth=$authToken';
+        'https://house-6dc86-default-rtdb.firebaseio.com/rentagreement.json?auth=$authToken';
         //  'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses.json?auth=$authToken';
     final timestamp = DateTime.now();
     try {
@@ -206,7 +206,7 @@ Future<void> addRentAgreement(RentAgreement rentAgreement) async {
     final prodIndex = _items.indexWhere((prod) => prod.id == id);
     if (prodIndex >= 0) {
       final url =
-          'https://rtotest-891ba-default-rtdb.firebaseio.com/house/$id.json?auth=$authToken';
+          'https://house-6dc86-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
           // 'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
       await http.patch(url,
           body: json.encode({
@@ -231,7 +231,7 @@ Future<void> addRentAgreement(RentAgreement rentAgreement) async {
 
   Future<void> deleteHouse(String id) async {
     final url =
-        'https://rtotest-891ba-default-rtdb.firebaseio.com/house/$id.json?auth=$authToken';
+        'https://house-6dc86-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
         // 'https://rent-to-own-6688f-default-rtdb.firebaseio.com/houses/$id.json?auth=$authToken';
     final existingHouseIndex = _items.indexWhere((prod) => prod.id == id);
     var existingHouse = _items[existingHouseIndex];

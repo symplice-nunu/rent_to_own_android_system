@@ -44,7 +44,7 @@ class House with ChangeNotifier {
     isFavorite = !isFavorite;
     notifyListeners();
     final url =
-        'https://rtotest-891ba-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json?auth=$token';
+        'https://house-6dc86-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json?auth=$token';
         // 'https://rent-to-own-6688f-default-rtdb.firebaseio.com/userFavorites/$userId/$id.json?auth=$token';
     try {
       final response = await http.put(
