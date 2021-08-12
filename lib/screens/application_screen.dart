@@ -14,7 +14,7 @@ class ApplicationScreen extends StatelessWidget {
     // final orderData = Provider.of<Orders>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your Application'),
+        title: Text('House Applications'),
       ),
       drawer: AppDrawer(),
       body: FutureBuilder(

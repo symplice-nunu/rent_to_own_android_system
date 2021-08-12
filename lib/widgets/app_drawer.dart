@@ -30,7 +30,7 @@ class AppDrawer extends StatelessWidget {
           Divider(),
           ListTile(
             leading: Icon(Icons.receipt_long),
-            title: Text('Requested Houses'),
+            title: Text('View Applications'),
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(ApplicationScreen.routeName);
@@ -69,7 +69,7 @@ class AppDrawer extends StatelessWidget {
           Divider(),
           ListTile(
             leading: Icon(Icons.view_column),
-            title: Text('View Returned Bail'),
+            title: Text('View Bail Payments'),
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(BailPaymentScreen.routeName);

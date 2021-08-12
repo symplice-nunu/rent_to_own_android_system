@@ -22,7 +22,8 @@ class _ApplicationItemState extends State<ApplicationItem> {
     return AnimatedContainer(
       duration: Duration(milliseconds: 300),
       height:
-          _expanded ? min(widget.applica.houses.length * 20.0 + 110, 200) : 95,
+      _expanded ? min(widget.applica.houses.length * 100.0 + 160, 200) : 95,
+          // _expanded ? min(widget.applica.houses.length * 220.0 + 160, 320) : 95,
       child: Card(
         margin: EdgeInsets.all(10),
         child: Column(
@@ -66,19 +67,201 @@ class _ApplicationItemState extends State<ApplicationItem> {
                                   color: Colors.blueAccent,
                                 ),
                               ),
-                              Text(
-                                '${prod.quantity}x \$${prod.price}',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.grey,
-                                ),
-                              )
+                              // new Text(
+                              //   '${prod.quantity}x \$${prod.price}',
+                              //   style: TextStyle(
+                              //     fontSize: 18,
+                              //     color: Colors.grey,
+                              //   ),
+                              // )
+                              
                             ],
+                            
                           ),
+                          
                     )
                     .toList(),
+                    
+                    
               ),
-            )
+            ),
+            AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+              height: _expanded ? min(widget.applica.houses.length * 20.0 + 10, 100) : 0,
+              child: ListView(
+                children: widget.applica.houses
+                    .map(
+                      (prod) => Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                prod.co,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              
+                              
+                              
+                            ],
+                            
+                          ),
+                          
+                    )
+                    .toList(),
+                    
+                    
+              ),
+            ),
+           
+             AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+              height: _expanded ? min(widget.applica.houses.length * 20.0 + 10, 100) : 0,
+              child: ListView(
+                children: widget.applica.houses
+                    .map(
+                      (prod) => Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                prod.at,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              
+                              
+                              
+                            ],
+                            
+                          ),
+                          
+                    )
+                    .toList(),
+                    
+                    
+              ),
+            ),
+    //         AnimatedContainer(
+    //           duration: Duration(milliseconds: 300),
+    //           padding: EdgeInsets.symmetric(horizontal: 95, vertical: 4),
+    //           height: _expanded ? min(widget.applica.houses.length * 20.0 + 10, 100) : 0,
+    //           child: ListView(
+    //             children: widget.applica.houses
+    //                 .map(
+    //                   (prod) => Row(
+    //                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //                         children: <Widget>[
+    //                           Text(
+    //                             prod.at1,
+    //                             style: TextStyle(
+    //                               fontSize: 15,
+    //                               fontWeight: FontWeight.bold,
+    //                             ),
+    //                           ),
+                              
+                              
+    //                         ],
+                            
+    //                       ),
+                          
+    //                 )
+    //                 .toList(),
+                    
+                    
+    //           ),
+    //         ),
+    //          AnimatedContainer(
+    //           duration: Duration(milliseconds: 300),
+    //           padding: EdgeInsets.symmetric(horizontal: 65, vertical: 4),
+    //           height: _expanded ? min(widget.applica.houses.length * 20.0 + 10, 100) : 0,
+    //           child: ListView(
+    //             children: widget.applica.houses
+    //                 .map(
+    //                   (prod) => Row(
+    //                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //                         children: <Widget>[
+    //                           Text(
+    //                             prod.pai,
+    //                             style: TextStyle(
+    //                               fontSize: 13,
+    //                               fontWeight: FontWeight.bold,
+    //                             ),
+    //                           ),
+                              
+                              
+    //                         ],
+                            
+    //                       ),
+                          
+    //                 )
+    //                 .toList(),
+                    
+                    
+    //           ),
+    //         ),
+    //         AnimatedContainer(
+    //           duration: Duration(milliseconds: 300),
+    //           padding: EdgeInsets.symmetric(horizontal: 65, vertical: 4),
+    //           height: _expanded ? min(widget.applica.houses.length * 20.0 + 10, 100) : 0,
+    //           child: ListView(
+    //             children: widget.applica.houses
+    //                 .map(
+    //                   (prod) => Row(
+    //                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //                         children: <Widget>[
+    //                           Text(
+    //                             prod.pai1,
+    //                             style: TextStyle(
+    //                               fontSize: 13,
+    //                               fontWeight: FontWeight.bold,
+    //                             ),
+    //                           ),
+                              
+                              
+    //                         ],
+                            
+    //                       ),
+                          
+    //                 )
+    //                 .toList(),
+                    
+                    
+    //           ),
+    //         ),
+    //         AnimatedContainer(
+    //           duration: Duration(milliseconds: 300),
+    //           padding: EdgeInsets.symmetric(horizontal: 65, vertical: 4),
+    //           height: _expanded ? min(widget.applica.houses.length * 20.0 + 10, 100) : 0,
+    //           child: ListView(
+    //             children: widget.applica.houses
+    //                 .map(
+    //                   (prod) => Row(
+    //                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //                         children: <Widget>[
+    //                           Text(
+    //                             prod.pai2,
+    //                             style: TextStyle(
+    //                               fontSize: 13,
+    //                               fontWeight: FontWeight.bold,
+    //                             ),
+    //                           ),
+                              
+                              
+    //                         ],
+                            
+    //                       ),
+                          
+    //                 )
+    //                 .toList(),
+                    
+                    
+    //           ),
+    //         ),
           ],
         ),
       ),
