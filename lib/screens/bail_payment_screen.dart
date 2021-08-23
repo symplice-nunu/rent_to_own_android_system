@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/houseapplication.dart' show Application;
-import '../widgets/application_item.dart';
+import '../widgets/monthly_item.dart';
 import '../widgets/app_drawer.dart';
 
 class BailPaymentScreen extends StatelessWidget {
@@ -32,7 +32,7 @@ class BailPaymentScreen extends StatelessWidget {
               return Consumer<Application>(
                 builder: (ctx, orderData, child) => ListView.builder(
                       itemCount: orderData.application.length,
-                      itemBuilder: (ctx, i) => ApplicationItem(orderData.application[i]),
+                      itemBuilder: (ctx, i) => MonthlyItem(orderData.application[i]),
                     ),
               );
             }
